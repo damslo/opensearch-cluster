@@ -4,6 +4,13 @@
 
 #cluster.name: dasl-cluster
 
+
+node.name: '${NODE_NAME}'
+node.type: '${NODE_TYPE}'
+
+
+
+
 network.host: 0.0.0.0
 
 # Unless you have already configured a cluster, you should set

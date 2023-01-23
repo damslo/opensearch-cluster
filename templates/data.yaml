@@ -10,3 +10,18 @@ spec:
     #- name: html
     #  mountPath: /usr/share/nginx/html
     imagePullPolicy: Never
+    env:
+    - name: "node-type"
+      value: "data"
+  - name: data2
+    image: damslo8421/opensearch:latest
+    #volumeMounts:
+    #- name: html
+    #  mountPath: /usr/share/nginx/html
+    imagePullPolicy: Never
+    env:
+    - name: "NODE_NAME"
+      value: "data2"
+    - name: "NODE_TYPE"
+      value: "data"
+    
