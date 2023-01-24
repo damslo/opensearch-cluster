@@ -1,0 +1,27 @@
+{{ if .Values.nodesList }}
+{{- range $key, $val := .Values.nodesList }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ $key }}
+  labels:
+    #namespace: opensearch-ns
+    app: opensearch
+    name: {{ $key }}
+    chart: {{ $.Chart.Name }}
+spec:
+  restartPolicy: Never
+  containers:
+  - name: {{ $key }}
+    ports:
+      - containerPort: 9200
+    image: damslo8421/opensearch:latest
+    imagePullPolicy: Never
+    env:
+    - name: "NODE_NAME"
+      value: "{{ $key }}"
+    - name: "NODE_TYPE"
+      value: "{{ $val }}"
+---
+{{- end }}
+{{ end }}

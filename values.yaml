@@ -2,8 +2,11 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-
-
+nodesList:
+  data1: "data"
+  master1: "master"
+#  - master2
+#  - master3
 
 
 replicaCount: 1

@@ -2,21 +2,21 @@
 # to include all available interfaces or specify an IP address
 # assigned to a specific interface.
 
-#cluster.name: dasl-cluster
+cluster.name: dasl-cluster
 
+#network.host: [_local_, _site_]
 
 node.name: '${NODE_NAME}'
-node.type: '${NODE_TYPE}'
+node.roles: ['${NODE_ROLE}']
 
+network.host: ${HOSTNAME}
 
-
-
-network.host: 0.0.0.0
+discovery.seed_hosts: ["data-node1", "data-node2", "master-node1", "master-node2", "master-node3"]
 
 # Unless you have already configured a cluster, you should set
 # discovery.type to single-node, or the bootstrap checks will
 # fail when you try to start the service.
-discovery.type: single-node
+#discovery.type: single-node
 
 # If you previously disabled the security plugin in opensearch.yml,
 # be sure to re-enable it. Otherwise you can skip this setting.

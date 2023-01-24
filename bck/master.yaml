@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: master-pod1
+  labels:
+    run: opensearch
+spec:
+  containers:
+  - name: master1
+    image: damslo8421/opensearch:latest
+    labels:
+      run: opensearch
+    imagePullPolicy: Never
+    env:
+    - name: "NODE_NAME"
+      value: "master1"
+    - name: "NODE_TYPE"
+      value: "cluster_manager"
+
+#---
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: master-pod2
+#  labels:
+#    run: opensearch
+#spec:
+#  containers:
+#  - name: master2
+#    image: damslo8421/opensearch:latest
+#    imagePullPolicy: Never
+#    env:
+#    - name: "NODE_NAME"
+#      value: "master2"
+#    - name: "NODE_TYPE"
+#      value: "cluster_manager"
+    

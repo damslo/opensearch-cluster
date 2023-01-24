@@ -1,15 +1,19 @@
+{{ if .Values.nodesList }}
+{{- range $key, $val := .Values.nodesList }}
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "opensearch-cluster.fullname" . }}
+  name: {{ $key }}
   labels:
-    {{- include "opensearch-cluster.labels" . | nindent 4 }}
+    app: opensearch
 spec:
-  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+  - port: 9200
+    targetPort: 9200
+    protocol: TCP
   selector:
-    {{- include "opensearch-cluster.selectorLabels" . | nindent 4 }}
+    name: {{ $key }}
+---
+{{- end }}
+{{ end }}
