@@ -35,6 +35,7 @@ RUN mv /opt/opensearch/opensearch-2.0.1/* /opt/opensearch
 RUN chmod +x /opt/opensearch/opensearch-tar-install.sh 
 
 ADD opensearch.yml /opt/opensearch/config/opensearch.yml
+ADD jvm.options /opt/opensearch/config/jvm.options
 
 
 

@@ -4,9 +4,11 @@
 
 nodesList:
   data1: "data"
-  master1: "master"
-#  - master2
-#  - master3
+  data2: "data"
+  master1: "cluster_manager"
+  master2: "cluster_manager"
+  master3: "cluster_manager"
+
 
 
 replicaCount: 1

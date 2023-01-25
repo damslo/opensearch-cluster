@@ -34,4 +34,7 @@ spec:
 #      value: "master2"
 #    - name: "NODE_TYPE"
 #      value: "cluster_manager"
-    
+        - name: "NODE_LIST"
+      value: "{{- range $index := $.Values.nodesList }}
+                - {{ $index }}\n
+              {{- end }}"  
