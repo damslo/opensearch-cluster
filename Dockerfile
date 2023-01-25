@@ -22,7 +22,6 @@ RUN useradd -u ${uid} -g ${group} -s /bin/bash -m ${user}
 # Run non-privileged command
 
 RUN mkdir /opt/opensearch
-
 RUN chown -R opensearch:opensearch /opt/opensearch
 
 
@@ -44,7 +43,7 @@ RUN chown -R opensearch:opensearch /opt/opensearch
 USER ${uid}:${gid}
 
 #CMD ["/usr/bin/sleep 50000"]
-#ENTRYPOINT ["/opt/opensearch/bin/opensearch"]
+#ENTRYPOINT chown -R opensearch:opensearch /opt/data
 CMD ["/opt/opensearch/bin/opensearch"]
 #&& /opt/opensearch/opensearch-tar-install.sh &
 

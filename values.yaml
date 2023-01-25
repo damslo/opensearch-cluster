@@ -4,10 +4,10 @@
 
 nodesList:
   data1: "data"
-  data2: "data"
+  #data2: "data"
   master1: "cluster_manager"
-  master2: "cluster_manager"
-  master3: "cluster_manager"
+  #master2: "cluster_manager"
+  #master3: "cluster_manager"
 
 
 

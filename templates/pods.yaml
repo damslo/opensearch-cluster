@@ -2,28 +2,48 @@
 
 {{ if .Values.nodesList }}
 {{- range $key, $val := .Values.nodesList }}
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
   name: {{ $key }}
-  labels:
-    #namespace: opensearch-ns
-    app: opensearch
-    name: {{ $key }}
-    chart: {{ $.Chart.Name }}
 spec:
-  restartPolicy: Never
-  containers:
-  - name: {{ $key }}
-    ports:
-      - containerPort: 9200
-    image: damslo8421/opensearch:latest
-    imagePullPolicy: Never
-    env:
-    - name: "NODE_NAME"
-      value: "{{ $key }}"
-    - name: "NODE_ROLE"
-      value: "{{ $val }}"
+  selector:
+    matchLabels:
+      app: opensearch
+  serviceName: "{{ $key }}"
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      name: {{ $key }}
+      labels:
+        app: opensearch
+        name: {{ $key }}
+    spec:
+      containers:
+      - name: {{ $key }}
+        image: damslo8421/opensearch:latest
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 9200
+        volumeMounts:
+        - name: pvc-{{ $key }}
+          mountPath: /opt/data
+        env:
+        - name: "NODE_NAME"
+          value: "{{ $key }}"
+        - name: "NODE_ROLE"
+          value: "{{ $val }}"
+        
+  volumeClaimTemplates:
+  - metadata:
+      name: pvc-{{ $key }}
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
 
 ---
 {{- end }}
