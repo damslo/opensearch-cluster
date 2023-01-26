@@ -24,7 +24,7 @@ spec:
       containers:
       - name: {{ $key }}
         image: damslo8421/opensearch:latest
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 9200
         volumeMounts:
