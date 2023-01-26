@@ -1,10 +1,10 @@
 #!/bin/bash
 echo "START"
-healthcheck=$(curl -s -X GET master1:9200/_cluster/health |jq -r '.status')
 
 
 while [ "$healthcheck" != "green" ]
 do
+healthcheck=$(curl -s -X GET master1:9200/_cluster/health |jq -r '.status')
 echo "cluster not ready: $healthcheck"
 sleep 10
 done
