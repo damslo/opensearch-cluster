@@ -11,11 +11,11 @@ node.roles: ['${NODE_ROLE}']
 
 network.host: ${HOSTNAME}
 
-#discovery.seed_hosts: ["data1", "data2", "master1", "master2", "master3"]
-discovery.seed_hosts: ["data1", "master1"]
+discovery.seed_hosts: ["data1", "data2", "master1", "master2", "master3"]
+#discovery.seed_hosts: ["data1", "master1"]
 
-#cluster.initial_cluster_manager_nodes: ["master1", "master2", "master3"]
-cluster.initial_cluster_manager_nodes: ["master1"]
+cluster.initial_cluster_manager_nodes: ["master1", "master2", "master3"]
+#cluster.initial_cluster_manager_nodes: ["master1"]
 
 
 
